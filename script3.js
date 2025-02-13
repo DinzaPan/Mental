@@ -49,54 +49,41 @@ function startGame(seconds) {
     generateProblem();
 }
 
-// Generar problema matemático con dificultad progresiva
+// Generar problema matemático
 function generateProblem() {
     let problem;
-    const level = Math.floor(score / 10) + 1; // Aumenta la dificultad cada 10 puntos
+    const level = Math.floor(score / 10) + 1;
 
-    if (level <= 3) {
-        // Dificultad baja (sumas, restas, multiplicaciones básicas)
+    if (level === 1) {
+        // Problemas fáciles (sumas, restas, multiplicaciones)
         const a = Math.floor(Math.random() * 50) + 1;
         const b = Math.floor(Math.random() * 50) + 1;
         const operators = ['+', '-', '*'];
         const operator = operators[Math.floor(Math.random() * operators.length)];
         problem = `${a} ${operator} ${b} = ?`;
         correctAnswer = eval(`${a} ${operator} ${b}`);
-    } else if (level <= 6) {
-        // Dificultad media (divisiones, fracciones, combinaciones simples)
+    } else if (level === 2) {
+        // Problemas intermedios (divisiones, fracciones)
         const a = Math.floor(Math.random() * 100) + 1;
         const b = Math.floor(Math.random() * 100) + 1;
         const operators = ['+', '-', '*', '/'];
         const operator = operators[Math.floor(Math.random() * operators.length)];
         problem = `${a} ${operator} ${b} = ?`;
         correctAnswer = operator === '/' ? (a / b).toFixed(2) : eval(`${a} ${operator} ${b}`);
-    } else if (level <= 10) {
-        // Dificultad alta (raíces cuadradas, potencias, combinaciones avanzadas)
-        const a = Math.floor(Math.random() * 100) + 1;
-        const b = Math.floor(Math.random() * 10) + 1;
-        const operations = [
-            { problem: `√${a} + ${b} = ?`, answer: (Math.sqrt(a) + b).toFixed(2) },
-            { problem: `(${a} + ${b}) * ${b} = ?`, answer: (a + b) * b },
-            { problem: `${a}^${b} - ${b} = ?`, answer: Math.pow(a, b) - b },
-            { problem: `${a} / ${b} + ${b} = ?`, answer: (a / b + b).toFixed(2) }
-        ];
-        const selected = operations[Math.floor(Math.random() * operations.length)];
-        problem = selected.problem;
-        correctAnswer = selected.answer;
+    } else if (level === 3) {
+        // Problemas avanzados (despejar "X")
+        const a = Math.floor(Math.random() * 50) + 1;
+        const b = Math.floor(Math.random() * 50) + 1;
+        const c = Math.floor(Math.random() * 50) + 1;
+        problem = `${a}x + ${b} = ${c}`;
+        correctAnswer = ((c - b) / a).toFixed(2);
     } else {
-        // Dificultad muy alta (nivel universitario: ecuaciones, logaritmos, etc.)
+        // Problemas complejos (combinaciones avanzadas)
         const a = Math.floor(Math.random() * 100) + 1;
         const b = Math.floor(Math.random() * 100) + 1;
         const c = Math.floor(Math.random() * 10) + 1;
-        const operations = [
-            { problem: `log(${a}) + ${b} = ?`, answer: (Math.log10(a) + b).toFixed(2) },
-            { problem: `sin(${a}°) + ${b} = ?`, answer: (Math.sin((a * Math.PI) / 180) + b).toFixed(2) },
-            { problem: `${a}x + ${b} = ${c}`, answer: ((c - b) / a).toFixed(2) },
-            { problem: `e^${a} / ${b} = ?`, answer: (Math.exp(a) / b).toFixed(2) }
-        ];
-        const selected = operations[Math.floor(Math.random() * operations.length)];
-        problem = selected.problem;
-        correctAnswer = selected.answer;
+        problem = `(${a} + ${b}) * ${c} - ${a} = ?`;
+        correctAnswer = (a + b) * c - a;
     }
 
     const answers = [correctAnswer, correctAnswer + Math.floor(Math.random() * 10) + 1, correctAnswer - Math.floor(Math.random() * 10) + 1];
