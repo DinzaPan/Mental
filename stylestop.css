@@ -1,0 +1,160 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Press Start 2P', cursive;
+    background: linear-gradient(-45deg, #1e3c72, #2a5298, #4a148c, #880e4f);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    overflow: hidden;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Contenedor del tablero de puntajes */
+.top-container {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+}
+
+/* Botón de salida */
+.exit-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.exit-button:hover {
+    color: red;
+}
+
+/* Título y icono de trofeo */
+.title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.title-container h1 {
+    font-size: 32px;
+    margin: 0;
+}
+
+.trophy-icon {
+    font-size: 32px;
+    color: gold;
+}
+
+/* Botones de selección */
+.selection-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.selection-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    background: #007bff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.selection-button.active {
+    background: #28a745;
+    animation: glow 1.5s infinite;
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 10px rgba(40, 167, 69, 0.8); }
+    50% { box-shadow: 0 0 20px rgba(40, 167, 69, 1); }
+}
+
+.selection-button:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Tablero de puntajes */
+.scoreboard {
+    margin-top: 20px;
+}
+
+.scoreboard h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.scores-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.score-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    font-family: Arial, sans-serif; /* Texto normal */
+}
+
+.score-item .rank {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.score-item .name {
+    flex: 1;
+    margin: 0 10px;
+}
+
+.score-item .score {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Iconos de trofeo */
+.trophy-gold {
+    color: gold;
+}
+
+.trophy-silver {
+    color: silver;
+}
+
+.trophy-bronze {
+    color: #cd7f32; /* Bronce */
+}

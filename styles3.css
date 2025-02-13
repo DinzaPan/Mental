@@ -1,0 +1,195 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Press Start 2P', cursive;
+    background: linear-gradient(-45deg, #1e3c72, #2a5298, #4a148c, #880e4f);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    overflow: hidden;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Contenedor del juego */
+.game-container {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+}
+
+/* Selección de tiempo */
+.time-selection {
+    margin-top: 20px;
+}
+
+.time-selection h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.time-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.time-button {
+    padding: 15px;
+    font-size: 16px;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    background: #007bff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.time-button:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.time-button:active {
+    transform: scale(0.95);
+}
+
+/* Juego principal */
+.game {
+    margin-top: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.scoreboard {
+    font-size: 18px;
+    font-family: Arial, sans-serif; /* Texto normal */
+}
+
+.timer {
+    font-size: 18px;
+    font-family: Arial, sans-serif; /* Texto normal */
+}
+
+.problem-container {
+    margin-bottom: 20px;
+}
+
+#problem {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-family: Arial, sans-serif; /* Texto normal */
+}
+
+.answers {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.answers button {
+    padding: 10px;
+    font-size: 18px;
+    font-family: Arial, sans-serif; /* Texto normal */
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.answers button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.answers button.correct {
+    background: #28a745 !important;
+}
+
+.answers button.disabled {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+/* Interfaz de evaluación */
+.evaluation {
+    margin-top: 20px;
+}
+
+.evaluation h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.evaluation p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif; /* Texto normal */
+}
+
+.evaluation-buttons {
+    display: flex;
+    flex-direction: column; /* Botones en filas verticales */
+    gap: 10px;
+    justify-content: center;
+}
+
+.evaluation-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: 'Press Start 2P', cursive; /* Fuente retro para los botones */
+    color: white;
+    background: #007bff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.evaluation-button:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Animación de perder tiempo */
+@keyframes timePenalty {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.time-penalty {
+    animation: timePenalty 0.5s;
+}
