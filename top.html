@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Puntajes</title>
+    <link rel="stylesheet" href="./css/stylestop.css">
+    <link rel="icon" href="brain-icon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="top-container">
+        <!-- Botón de salida -->
+        <div id="exit-button" class="exit-button">
+            <i class="fas fa-times"></i>
+        </div>
+
+        <!-- Título y icono de trofeo -->
+        <div class="title-container">
+            <h1>Top</h1>
+            <i class="fas fa-trophy trophy-icon"></i>
+        </div>
+
+        <!-- Botones de selección -->
+        <div class="selection-buttons">
+            <button id="normal-mode" class="selection-button active">
+                <i class="fas fa-gamepad"></i> Modo Normal
+            </button>
+            <button id="record-mode" class="selection-button">
+                <i class="fas fa-trophy"></i> Mi Récord
+            </button>
+        </div>
+
+        <!-- Tablero de puntajes (Modo Normal) -->
+        <div id="normal-scores" class="scoreboard">
+            <h2>Top 10 - Modo Normal</h2>
+            <div id="normal-scores-list" class="scores-list"></div>
+        </div>
+
+        <!-- Tablero de puntajes (Mi Récord) -->
+        <div id="record-scores" class="scoreboard" style="display: none;">
+            <h2>Top 10 - Mi Récord</h2>
+            <div id="record-scores-list" class="scores-list"></div>
+        </div>
+    </div>
+    <script src="./js/scripttop.js"></script>
+</body>
+</html>

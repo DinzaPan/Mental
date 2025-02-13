@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental - Modo Difícil</title>
+    <link rel="stylesheet" href="../css/styles3.css">
+    <link rel="icon" href="brain-icon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Selección de tiempo -->
+        <div id="time-selection" class="time-selection">
+            <h2>Selecciona el tiempo:</h2>
+            <div class="time-buttons">
+                <button id="1-minute" class="time-button">
+                    <i class="fas fa-clock"></i> 1 Minuto
+                </button>
+                <button id="3-minutes" class="time-button">
+                    <i class="fas fa-clock"></i> 3 Minutos
+                </button>
+                <button id="6-minutes" class="time-button">
+                    <i class="fas fa-clock"></i> 6 Minutos
+                </button>
+                <button id="10-minutes" class="time-button">
+                    <i class="fas fa-clock"></i> 10 Minutos
+                </button>
+                <button id="15-minutes" class="time-button">
+                    <i class="fas fa-clock"></i> 15 Minutos
+                </button>
+            </div>
+        </div>
+
+        <!-- Juego principal (oculto inicialmente) -->
+        <div id="game" class="game" style="display: none;">
+            <div class="header">
+                <div class="scoreboard">
+                    <span>Puntos: <span id="score">0</span></span>
+                </div>
+                <div class="timer">
+                    <span>⏰</span>
+                    <span id="time">00:00</span>
+                </div>
+            </div>
+            <div class="problem-container">
+                <div id="problem"></div>
+                <div class="answers">
+                    <button id="answer1"></button>
+                    <button id="answer2"></button>
+                    <button id="answer3"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interfaz de evaluación (oculta inicialmente) -->
+        <div id="evaluation" class="evaluation" style="display: none;">
+            <h2>Evaluación</h2>
+            <p>Puntos: <span id="final-score">0</span></p>
+            <div class="evaluation-buttons">
+                <button id="retry" class="evaluation-button">
+                    <i class="fas fa-redo"></i> Reintentar
+                </button>
+                <button id="back" class="evaluation-button">
+                    <i class="fas fa-home"></i> Volver
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="../js/script3.js"></script>
+</body>
+</html>

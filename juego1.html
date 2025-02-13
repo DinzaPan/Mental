@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="icon" href="brain-icon.png" type="image/png">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="hearts">
+                <span id="heart1">❤️</span>
+                <span id="heart2">❤️</span>
+                <span id="heart3">❤️</span>
+            </div>
+            <div class="scoreboard">
+                <div class="score-item">
+                    <span>Puntos:</span>
+                    <span id="score">0</span>
+                </div>
+                <div class="score-item">
+                    <span>Mejor Puntuación:</span>
+                    <span id="high-score">0</span>
+                </div>
+            </div>
+            <div class="timer">
+                <span>⏰</span>
+                <span id="time">02:00</span>
+            </div>
+        </div>
+        <div class="problem-container">
+            <div id="problem"></div>
+            <div class="answers">
+                <button id="answer1"></button>
+                <button id="answer2"></button>
+                <button id="answer3"></button>
+            </div>
+        </div>
+        <div class="game-over">
+            <h1>Fin del Juego</h1>
+            <button id="restart">Reiniciar</button>
+        </div>
+    </div>
+    <script src="./js/script.js"></script>
+</body>
+</html>
