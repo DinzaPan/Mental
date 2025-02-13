@@ -32,6 +32,21 @@ body {
     max-width: 500px;
 }
 
+/* Botón de salida */
+.exit-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.exit-button:hover {
+    color: red;
+}
+
 /* Selección de tiempo */
 .time-selection {
     margin-top: 20px;
@@ -96,6 +111,16 @@ body {
     font-family: Arial, sans-serif; /* Texto normal */
 }
 
+.focus-button {
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.focus-button:hover {
+    transform: scale(1.1);
+}
+
 .problem-container {
     margin-bottom: 20px;
 }
@@ -137,6 +162,24 @@ body {
 .answers button.disabled {
     pointer-events: none;
     opacity: 0.7;
+}
+
+.answers button.highlight {
+    border: 3px solid gold;
+    animation: highlight 1s infinite;
+}
+
+@keyframes highlight {
+    0% { border-color: gold; }
+    50% { border-color: orange; }
+    100% { border-color: gold; }
+}
+
+.warning {
+    font-size: 14px;
+    color: red;
+    margin-top: 10px;
+    font-family: Arial, sans-serif; /* Texto normal */
 }
 
 /* Interfaz de evaluación */
