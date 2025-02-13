@@ -4,6 +4,8 @@ let timeLeft = 0;
 let timerInterval;
 let correctAnswer;
 let isGameRunning = false;
+let focusCount = 3;
+let isFocusUsed = false;
 
 const timeSelection = document.getElementById('time-selection');
 const game = document.getElementById('game');
@@ -15,6 +17,9 @@ const problemDisplay = document.getElementById('problem');
 const answer1 = document.getElementById('answer1');
 const answer2 = document.getElementById('answer2');
 const answer3 = document.getElementById('answer3');
+const focusButton = document.getElementById('focus-button');
+const focusCountDisplay = document.getElementById('focus-count');
+const warning = document.getElementById('warning');
 const retryButton = document.getElementById('retry');
 const backButton = document.getElementById('back');
 
@@ -24,6 +29,16 @@ document.getElementById('3-minutes').addEventListener('click', () => startGame(1
 document.getElementById('6-minutes').addEventListener('click', () => startGame(360));
 document.getElementById('10-minutes').addEventListener('click', () => startGame(600));
 document.getElementById('15-minutes').addEventListener('click', () => startGame(900));
+
+// Botón de foco
+focusButton.addEventListener('click', () => {
+    if (focusCount > 0 && !isFocusUsed) {
+        focusCount--;
+        focusCountDisplay.textContent = focusCount;
+        highlightCorrectAnswer();
+        isFocusUsed = true;
+    }
+});
 
 // Botón de reintentar
 retryButton.addEventListener('click', () => {
@@ -40,7 +55,9 @@ backButton.addEventListener('click', () => {
 function startGame(seconds) {
     timeLeft = seconds;
     score = 0;
+    focusCount = 3;
     scoreDisplay.textContent = score;
+    focusCountDisplay.textContent = focusCount;
     timeSelection.style.display = 'none';
     game.style.display = 'block';
     evaluation.style.display = 'none';
@@ -94,10 +111,25 @@ function generateProblem() {
     answer2.textContent = answers[1];
     answer3.textContent = answers[2];
 
-    // Remover la clase "correct" y "disabled" de los botones
-    answer1.classList.remove('correct', 'disabled');
-    answer2.classList.remove('correct', 'disabled');
-    answer3.classList.remove('correct', 'disabled');
+    // Remover la clase "correct" y "highlight" de los botones
+    answer1.classList.remove('correct', 'highlight', 'disabled');
+    answer2.classList.remove('correct', 'highlight', 'disabled');
+    answer3.classList.remove('correct', 'highlight', 'disabled');
+
+    // Habilitar los botones de respuesta
+    answer1.disabled = false;
+    answer2.disabled = false;
+    answer3.disabled = false;
+
+    // Reiniciar el uso del foco
+    isFocusUsed = false;
+}
+
+// Resaltar la respuesta correcta
+function highlightCorrectAnswer() {
+    if (answer1.textContent == correctAnswer) answer1.classList.add('highlight');
+    if (answer2.textContent == correctAnswer) answer2.classList.add('highlight');
+    if (answer3.textContent == correctAnswer) answer3.classList.add('highlight');
 }
 
 // Verificar respuesta
@@ -120,9 +152,9 @@ function checkAnswer(selectedAnswer, correctAnswer) {
         if (answer3.textContent == correctAnswer) answer3.classList.add('correct');
 
         // Deshabilitar los botones de respuesta
-        answer1.classList.add('disabled');
-        answer2.classList.add('disabled');
-        answer3.classList.add('disabled');
+        answer1.classList.add('disabled'); 
+         answer2.classList.add('disabled');
+          answer3.classList.add('disabled');
 
         setTimeout(() => {
             generateProblem();
