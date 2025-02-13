@@ -145,7 +145,7 @@ function checkAnswer(selectedAnswer, correctAnswer) {
     if (selectedAnswer == correctAnswer) {
         score++;
         scoreDisplay.textContent = score;
-        generateProblem();
+        generateProblem(); // Generar un nuevo problema después de cada respuesta correcta
     } else {
         timeLeft -= 15; // Restar 15 segundos por respuesta incorrecta
         if (timeLeft < 0) timeLeft = 0;
@@ -163,8 +163,8 @@ function checkAnswer(selectedAnswer, correctAnswer) {
         answer3.classList.add('disabled');
 
         setTimeout(() => {
-            generateProblem();
-        }, 1500); // Esperar 1.5 segundos antes de generar un nuevo problema
+            generateProblem(); // Generar un nuevo problema después de 1.5 segundos
+        }, 1500);
     }
 }
 
