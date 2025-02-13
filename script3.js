@@ -55,82 +55,57 @@ function generateProblem() {
     const level = Math.floor(score / 10) + 1; // Aumenta la dificultad cada 10 puntos
 
     if (level <= 3) {
-        // Dificultad media (sumas, restas, multiplicaciones y divisiones con números mayores)
-        const a = Math.floor(Math.random() * 100) + 50;
-        const b = Math.floor(Math.random() * 100) + 50;
+        // Dificultad baja (sumas, restas, multiplicaciones básicas)
+        const a = Math.floor(Math.random() * 50) + 1;
+        const b = Math.floor(Math.random() * 50) + 1;
+        const operators = ['+', '-', '*'];
+        const operator = operators[Math.floor(Math.random() * operators.length)];
+        problem = `${a} ${operator} ${b} = ?`;
+        correctAnswer = eval(`${a} ${operator} ${b}`);
+    } else if (level <= 6) {
+        // Dificultad media (divisiones, fracciones, combinaciones simples)
+        const a = Math.floor(Math.random() * 100) + 1;
+        const b = Math.floor(Math.random() * 100) + 1;
         const operators = ['+', '-', '*', '/'];
         const operator = operators[Math.floor(Math.random() * operators.length)];
         problem = `${a} ${operator} ${b} = ?`;
         correctAnswer = operator === '/' ? (a / b).toFixed(2) : eval(`${a} ${operator} ${b}`);
-    } else if (level <= 6) {
-        // Dificultad alta (combinaciones de operaciones con raíces cuadradas y potencias)
-        const a = Math.floor(Math.random() * 100) + 50;
-        const b = Math.floor(Math.random() * 20) + 10;
-        const operations = [
-            { problem: `√${a} + ${b} * 2 = ?`, answer: (Math.sqrt(a) + b * 2).toFixed(2) },
-            { problem: `(${a} + ${b})^2 = ?`, answer: Math.pow(a + b, 2) },
-            { problem: `${a} / ${b} + ${a} = ?`, answer: (a / b + a).toFixed(2) },
-            { problem: `${a} * ${b} - ${a} = ?`, answer: (a * b - a) },
-            { problem: `√(${a} + ${b}) = ?`, answer: Math.sqrt(a + b).toFixed(2) },
-            { problem: `${a}^${b} - ${a} = ?`, answer: Math.pow(a, b) - a }
-        ];
-        const selected = operations[Math.floor(Math.random() * operations.length)];
-        problem = selected.problem;
-        correctAnswer = selected.answer;
     } else if (level <= 10) {
-        // Dificultad muy alta (combinaciones avanzadas con logaritmos y trigonometría)
-        const a = Math.floor(Math.random() * 100) + 50;
-        const b = Math.floor(Math.random() * 100) + 50;
-        const c = Math.floor(Math.random() * 10) + 5;
+        // Dificultad alta (raíces cuadradas, potencias, combinaciones avanzadas)
+        const a = Math.floor(Math.random() * 100) + 1;
+        const b = Math.floor(Math.random() * 10) + 1;
         const operations = [
-            { problem: `log(${a}) + ${b} = ?`, answer: (Math.log10(a) + b).toFixed(2) },
-            { problem: `sin(${a}°) + ${b} = ?`, answer: (Math.sin((a * Math.PI) / 180) + b).toFixed(2) },
-            { problem: `${a}x + ${b} = ${c}`, answer: ((c - b) / a).toFixed(2) },
-            { problem: `e^${a} / ${b} = ?`, answer: (Math.exp(a) / b).toFixed(2) },
-            { problem: `(${a} + ${b})^2 = ?`, answer: Math.pow(a + b, 2) },
-            { problem: `√(${a} + ${b}) = ?`, answer: Math.sqrt(a + b).toFixed(2) }
+            { problem: `√${a} + ${b} = ?`, answer: (Math.sqrt(a) + b).toFixed(2) },
+            { problem: `(${a} + ${b}) * ${b} = ?`, answer: (a + b) * b },
+            { problem: `${a}^${b} - ${b} = ?`, answer: Math.pow(a, b) - b },
+            { problem: `${a} / ${b} + ${b} = ?`, answer: (a / b + b).toFixed(2) }
         ];
         const selected = operations[Math.floor(Math.random() * operations.length)];
         problem = selected.problem;
         correctAnswer = selected.answer;
     } else {
-        // Dificultad extrema (Modo Experto: integrales, derivadas, límites, combinaciones avanzadas)
-        const a = Math.floor(Math.random() * 100) + 50;
-        const b = Math.floor(Math.random() * 100) + 50;
-        const c = Math.floor(Math.random() * 10) + 5;
+        // Dificultad muy alta (nivel universitario: ecuaciones, logaritmos, etc.)
+        const a = Math.floor(Math.random() * 100) + 1;
+        const b = Math.floor(Math.random() * 100) + 1;
+        const c = Math.floor(Math.random() * 10) + 1;
         const operations = [
-            { problem: `∫(${a}x + ${b}) dx`, answer: `${(a / 2).toFixed(2)}x^2 + ${b}x + C` },
-            { problem: `d/dx (${a}x^2 + ${b}x)`, answer: `${2 * a}x + ${b}` },
-            { problem: `lim(x -> ${a}) (x^2 - ${b})`, answer: (Math.pow(a, 2) - b).toFixed(2) },
-            { problem: `${a} * e^${b} = ?`, answer: (a * Math.exp(b)).toFixed(2) },
-            { problem: `cos(${a}°) + ${b} = ?`, answer: (Math.cos((a * Math.PI) / 180) + b).toFixed(2) },
-            { problem: `ln(${a}) + ${b} = ?`, answer: (Math.log(a) + b).toFixed(2) },
-            { problem: `(${a} + ${b}) * √${c} = ?`, answer: ((a + b) * Math.sqrt(c)).toFixed(2) },
-            { problem: `${a}^${b} / ${c} = ?`, answer: (Math.pow(a, b) / c).toFixed(2) }
+            { problem: `log(${a}) + ${b} = ?`, answer: (Math.log10(a) + b).toFixed(2) },
+            { problem: `sin(${a}°) + ${b} = ?`, answer: (Math.sin((a * Math.PI) / 180) + b).toFixed(2) },
+            { problem: `${a}x + ${b} = ${c}`, answer: ((c - b) / a).toFixed(2) },
+            { problem: `e^${a} / ${b} = ?`, answer: (Math.exp(a) / b).toFixed(2) }
         ];
         const selected = operations[Math.floor(Math.random() * operations.length)];
         problem = selected.problem;
         correctAnswer = selected.answer;
     }
 
-    // Generar respuestas únicas y no muy parecidas
-    const answers = new Set();
-    answers.add(correctAnswer);
-    while (answers.size < 3) {
-        const randomOffset = Math.floor(Math.random() * 50) - 25; // Variación de -25 a +25
-        const fakeAnswer = parseFloat(correctAnswer) + randomOffset;
-        if (fakeAnswer !== correctAnswer && !answers.has(fakeAnswer.toFixed(2))) {
-            answers.add(fakeAnswer.toFixed(2));
-        }
-    }
-
-    const answerArray = Array.from(answers);
-    answerArray.sort(() => Math.random() - 0.5);
+    const answers = [correctAnswer, correctAnswer + Math.floor(Math.random() * 10) + 1, correctAnswer - Math.floor(Math.random() * 10) + 1];
+    answers.sort(() => Math.random() - 0.5);
 
     problemDisplay.textContent = problem;
-    answer1.textContent = answerArray[0];
-    answer2.textContent = answerArray[1];
-    answer3.textContent = answerArray[2];
+    answer1.textContent = answers[0];
+    answer2.textContent = answers[1];
+    answer3.textContent = answers[2];
 
     // Remover la clase "correct" y "disabled" de los botones
     answer1.classList.remove('correct', 'disabled');
@@ -145,7 +120,7 @@ function checkAnswer(selectedAnswer, correctAnswer) {
     if (selectedAnswer == correctAnswer) {
         score++;
         scoreDisplay.textContent = score;
-        generateProblem(); // Generar un nuevo problema después de cada respuesta correcta
+        generateProblem();
     } else {
         timeLeft -= 15; // Restar 15 segundos por respuesta incorrecta
         if (timeLeft < 0) timeLeft = 0;
@@ -163,8 +138,8 @@ function checkAnswer(selectedAnswer, correctAnswer) {
         answer3.classList.add('disabled');
 
         setTimeout(() => {
-            generateProblem(); // Generar un nuevo problema después de 1.5 segundos
-        }, 1500);
+            generateProblem();
+        }, 1500); // Esperar 1.5 segundos antes de generar un nuevo problema
     }
 }
 
